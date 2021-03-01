@@ -7,7 +7,7 @@ homepage = "https://github.com/tetcoin/tetsy-jsonrpc"
 license = "MIT"
 name = "tetsy-jsonrpc-derive"
 repository = "https://github.com/tetcoin/tetsy-jsonrpc"
-version = "14.2.0"
+version = "14.2.1"
 
 [lib]
 proc-macro = true
