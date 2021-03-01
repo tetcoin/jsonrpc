@@ -184,16 +184,16 @@ mod tests {
 
 	#[test]
 	fn should_parse_host() {
-		assert_eq!(Host::parse("http://parity.io"), Host::new("parity.io", None));
+		assert_eq!(Host::parse("http://tetcoin.org"), Host::new("tetcoin.org", None));
 		assert_eq!(
-			Host::parse("https://parity.io:8443"),
-			Host::new("parity.io", Some(8443))
+			Host::parse("https://tetcoin.org:8443"),
+			Host::new("tetcoin.org", Some(8443))
 		);
 		assert_eq!(
 			Host::parse("chrome-extension://124.0.0.1"),
 			Host::new("124.0.0.1", None)
 		);
-		assert_eq!(Host::parse("parity.io/somepath"), Host::new("parity.io", None));
+		assert_eq!(Host::parse("tetcoin.org/somepath"), Host::new("tetcoin.org", None));
 		assert_eq!(
 			Host::parse("127.0.0.1:8545/somepath"),
 			Host::new("127.0.0.1", Some(8545))
@@ -214,25 +214,25 @@ mod tests {
 
 	#[test]
 	fn should_reject_if_header_not_on_the_list() {
-		let valid = is_host_valid(Some("parity.io"), &Some(vec![]));
+		let valid = is_host_valid(Some("tetcoin.org"), &Some(vec![]));
 		assert_eq!(valid, false);
 	}
 
 	#[test]
 	fn should_accept_if_on_the_list() {
-		let valid = is_host_valid(Some("parity.io"), &Some(vec!["parity.io".into()]));
+		let valid = is_host_valid(Some("tetcoin.org"), &Some(vec!["tetcoin.org".into()]));
 		assert_eq!(valid, true);
 	}
 
 	#[test]
 	fn should_accept_if_on_the_list_with_port() {
-		let valid = is_host_valid(Some("parity.io:443"), &Some(vec!["parity.io:443".into()]));
+		let valid = is_host_valid(Some("tetcoin.org:443"), &Some(vec!["tetcoin.org:443".into()]));
 		assert_eq!(valid, true);
 	}
 
 	#[test]
 	fn should_support_wildcards() {
-		let valid = is_host_valid(Some("parity.web3.site:8180"), &Some(vec!["*.web3.site:*".into()]));
+		let valid = is_host_valid(Some("tetcoin.web3.site:8180"), &Some(vec!["*.web3.site:*".into()]));
 		assert_eq!(valid, true);
 	}
 }

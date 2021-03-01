@@ -1,10 +1,10 @@
-use jsonrpc_core::types::params::Params;
-use jsonrpc_core::{IoHandler, Response};
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::types::params::Params;
+use tetsy_jsonrpc_core::{IoHandler, Response};
+use tetsy_jsonrpc_derive::rpc;
 use serde_json;
 
 pub enum MyError {}
-impl From<MyError> for jsonrpc_core::Error {
+impl From<MyError> for tetsy_jsonrpc_core::Error {
 	fn from(_e: MyError) -> Self {
 		unreachable!()
 	}

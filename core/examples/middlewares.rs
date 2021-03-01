@@ -1,6 +1,6 @@
-use jsonrpc_core::futures::future::Either;
-use jsonrpc_core::futures::Future;
-use jsonrpc_core::*;
+use tetsy_jsonrpc_core::futures::future::Either;
+use tetsy_jsonrpc_core::futures::Future;
+use tetsy_jsonrpc_core::*;
 use std::sync::atomic::{self, AtomicUsize};
 use std::time::Instant;
 

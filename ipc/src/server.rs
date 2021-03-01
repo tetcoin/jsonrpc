@@ -14,8 +14,8 @@ use parking_lot::Mutex;
 
 use crate::meta::{MetaExtractor, NoopExtractor, RequestContext};
 use crate::select_with_weak::SelectWithWeakExt;
-use parity_tokio_ipc::Endpoint;
-pub use parity_tokio_ipc::SecurityAttributes;
+use tetsy_tokio_ipc::Endpoint;
+pub use tetsy_tokio_ipc::SecurityAttributes;
 
 /// IPC server session
 pub struct Service<M: Metadata = (), S: Middleware<M> = middleware::Noop> {

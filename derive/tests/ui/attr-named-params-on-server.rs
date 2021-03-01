@@ -1,4 +1,4 @@
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_derive::rpc;
 
 #[rpc]
 pub trait Rpc {

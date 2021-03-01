@@ -113,8 +113,8 @@ mod tests {
 	use crate::*;
 	use assert_matches::assert_matches;
 	use hyper::rt;
-	use jsonrpc_core::{Error, ErrorCode, IoHandler, Params, Value};
-	use jsonrpc_http_server::*;
+	use tetsy_jsonrpc_core::{Error, ErrorCode, IoHandler, Params, Value};
+	use tetsy_jsonrpc_http_server::*;
 	use std::net::SocketAddr;
 	use std::time::Duration;
 

@@ -1,10 +1,10 @@
-//! An utility package to test jsonrpc-core based projects.
+//! An utility package to test tetsy-jsonrpc-core based projects.
 //!
 //! ```
-//! use jsonrpc_derive::rpc;
-//! use jsonrpc_test as test;
+//! use tetsy_jsonrpc_derive::rpc;
+//! use tetsy_jsonrpc_test as test;
 //!
-//! use jsonrpc_core::{Result, Error, IoHandler};
+//! use tetsy_jsonrpc_core::{Result, Error, IoHandler};
 //!
 //! #[rpc]
 //! pub trait Test {
@@ -45,7 +45,7 @@
 
 #![deny(missing_docs)]
 
-extern crate jsonrpc_core as rpc;
+extern crate tetsy_jsonrpc_core as rpc;
 use serde;
 use serde_json;
 

@@ -3,8 +3,8 @@
 use failure::format_err;
 use futures::prelude::*;
 use futures::sync::{mpsc, oneshot};
-use jsonrpc_core::Id;
-use jsonrpc_pubsub::SubscriptionId;
+use tetsy_jsonrpc_core::Id;
+use tetsy_jsonrpc_pubsub::SubscriptionId;
 use log::debug;
 use serde_json::Value;
 use std::collections::HashMap;

@@ -2,7 +2,7 @@
 
 #![deny(missing_docs)]
 
-use jsonrpc_core as core;
+use tetsy_jsonrpc_core as core;
 
 #[macro_use]
 extern crate log;

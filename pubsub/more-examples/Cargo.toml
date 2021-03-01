@@ -1,14 +1,14 @@
 [package]
-name = "jsonrpc-pubsub-examples"
-description = "Examples of Publish-Subscribe extension for jsonrpc."
-homepage = "https://github.com/paritytech/jsonrpc"
-repository = "https://github.com/paritytech/jsonrpc"
+name = "tetsy-jsonrpc-pubsub-examples"
+description = "Tetsy Flavored Examples of Publish-Subscribe extension for jsonrpc."
+homepage = "https://github.com/tetcoin/tetsy-jsonrpc"
+repository = "https://github.com/tetcoin/tetsy-jsonrpc"
 version = "14.2.0"
 authors = ["tomusdrw <tomasz@parity.io>"]
 license = "MIT"
 
 [dependencies]
-jsonrpc-core = { version = "14.2", path = "../../core" }
-jsonrpc-pubsub = { version = "14.2", path = "../" }
-jsonrpc-ws-server = { version = "14.2", path = "../../ws" }
-jsonrpc-ipc-server = { version = "14.2", path = "../../ipc" }
+tetsy-jsonrpc-core = { version = "14.2", path = "../../core" }
+tetsy-jsonrpc-pubsub = { version = "14.2", path = "../" }
+tetsy-jsonrpc-ws-server = { version = "14.2", path = "../../ws" }
+tetsy-jsonrpc-ipc-server = { version = "14.2", path = "../../ipc" }

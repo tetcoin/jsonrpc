@@ -1,8 +1,8 @@
-extern crate jsonrpc_core;
+extern crate tetsy_jsonrpc_core;
 #[macro_use]
-extern crate jsonrpc_derive;
+extern crate tetsy_jsonrpc_derive;
 
-use jsonrpc_core::{Result, IoHandler};
+use tetsy_jsonrpc_core::{Result, IoHandler};
 
 #[rpc(server)]
 pub trait Rpc {

@@ -1,5 +1,5 @@
-use jsonrpc_stdio_server::jsonrpc_core::*;
-use jsonrpc_stdio_server::ServerBuilder;
+use tetsy_jsonrpc_stdio_server::tetsy_jsonrpc_core::*;
+use tetsy_jsonrpc_stdio_server::ServerBuilder;
 
 fn main() {
 	let mut io = IoHandler::default();

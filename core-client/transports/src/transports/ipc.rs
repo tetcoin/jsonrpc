@@ -4,8 +4,8 @@
 use crate::transports::duplex::duplex;
 use crate::{RpcChannel, RpcError};
 use futures::prelude::*;
-use jsonrpc_server_utils::codecs::StreamCodec;
-use parity_tokio_ipc::IpcConnection;
+use tetsy_jsonrpc_server_utils::codecs::StreamCodec;
+use tetsy_tokio_ipc::IpcConnection;
 use std::io;
 use std::path::Path;
 use tokio::codec::Decoder;
@@ -33,9 +33,9 @@ pub fn connect<P: AsRef<Path>, Client: From<RpcChannel>>(
 mod tests {
 	use super::*;
 	use crate::*;
-	use jsonrpc_core::{Error, ErrorCode, IoHandler, Params, Value};
-	use jsonrpc_ipc_server::ServerBuilder;
-	use parity_tokio_ipc::dummy_endpoint;
+	use tetsy_jsonrpc_core::{Error, ErrorCode, IoHandler, Params, Value};
+	use tetsy_jsonrpc_ipc_server::ServerBuilder;
+	use tetsy_tokio_ipc::dummy_endpoint;
 	use serde_json::map::Map;
 	use tokio::runtime::Runtime;
 
@@ -68,7 +68,7 @@ mod tests {
 
 		// FIXME: it seems that IPC server on Windows won't be polled with
 		// default I/O reactor, work around with sending stop signal which polls
-		// the server (https://github.com/paritytech/jsonrpc/pull/459)
+		// the server (https://github.com/tetcoin/tetsy-jsonrpc/pull/459)
 		server.close();
 
 		match rt.block_on(fut) {
@@ -110,7 +110,7 @@ mod tests {
 
 		// FIXME: it seems that IPC server on Windows won't be polled with
 		// default I/O reactor, work around with sending stop signal which polls
-		// the server (https://github.com/paritytech/jsonrpc/pull/459)
+		// the server (https://github.com/tetcoin/tetsy-jsonrpc/pull/459)
 		server.close();
 
 		match rt.block_on(fut) {

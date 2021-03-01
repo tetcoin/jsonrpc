@@ -1,11 +1,11 @@
 use std::sync::{atomic, Arc};
 use std::{thread, time};
 
-use jsonrpc_core::*;
-use jsonrpc_pubsub::{PubSubHandler, Session, Subscriber, SubscriptionId};
-use jsonrpc_tcp_server::{RequestContext, ServerBuilder};
+use tetsy_jsonrpc_core::*;
+use tetsy_jsonrpc_pubsub::{PubSubHandler, Session, Subscriber, SubscriptionId};
+use tetsy_jsonrpc_tcp_server::{RequestContext, ServerBuilder};
 
-use jsonrpc_core::futures::Future;
+use tetsy_jsonrpc_core::futures::Future;
 
 /// To test the server:
 ///

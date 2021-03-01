@@ -1,7 +1,7 @@
-# jsonrpc-ipc-server
+# tetsy-jsonrpc-ipc-server
 IPC server (Windows & Linux) for JSON-RPC 2.0.
 
-[Documentation](http://paritytech.github.io/jsonrpc/jsonrpc_ipc_server/index.html)
+[Documentation](http://tetcoin.github.io/tetsy-jsonrpc/jsonrpc_ipc_server/index.html)
 
 ## Example
 
@@ -9,16 +9,16 @@ IPC server (Windows & Linux) for JSON-RPC 2.0.
 
 ```
 [dependencies]
-jsonrpc-ipc-server = "14.2"
+tetsy-jsonrpc-ipc-server = "14.2"
 ```
 
 `main.rs`
 
 ```rust
-extern crate jsonrpc_ipc_server;
+extern crate tetsy_jsonrpc_ipc_server;
 
-use jsonrpc_ipc_server::ServerBuilder;
-use jsonrpc_ipc_server::jsonrpc_core::*;
+use tetsy_jsonrpc_ipc_server::ServerBuilder;
+use tetsy_jsonrpc_ipc_server::tetsy_jsonrpc_core::*;
 
 fn main() {
 	let mut io = IoHandler::new();

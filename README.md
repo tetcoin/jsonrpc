@@ -8,45 +8,45 @@ Transport-agnostic `core` and transport servers for `http`, `ipc`, `websockets` 
 [![Build Status][travis-image]][travis-url]
 [![Build Status][appveyor-image]][appveyor-url]
 
-[travis-image]: https://travis-ci.org/paritytech/jsonrpc.svg?branch=master
-[travis-url]: https://travis-ci.org/paritytech/jsonrpc
-[appveyor-image]: https://ci.appveyor.com/api/projects/status/github/paritytech/jsonrpc?svg=true
-[appveyor-url]: https://ci.appveyor.com/project/paritytech/jsonrpc/branch/master
+[travis-image]: https://travis-ci.org/tetcoin/tetsy-jsonrpc.svg?branch=master
+[travis-url]: https://travis-ci.org/tetcoin/tetsy-jsonrpc
+[appveyor-image]: https://ci.appveyor.com/api/projects/status/github/tetcoin/tetsy-jsonrpc?svg=true
+[appveyor-url]: https://ci.appveyor.com/project/tetcoin/tetsy-jsonrpc/branch/master
 
-[Documentation](http://paritytech.github.io/jsonrpc/)
+[Documentation](http://tetcoin.github.io/tetsy-jsonrpc/)
 
 ## Sub-projects
-- [jsonrpc-core](./core) [![crates.io][core-image]][core-url]
-- [jsonrpc-core-client](./core-client) [![crates.io][core-client-image]][core-client-url]
-- [jsonrpc-http-server](./http) [![crates.io][http-server-image]][http-server-url]
-- [jsonrpc-ipc-server](./ipc) [![crates.io][ipc-server-image]][ipc-server-url]
-- [jsonrpc-tcp-server](./tcp) [![crates.io][tcp-server-image]][tcp-server-url]
-- [jsonrpc-ws-server](./ws) [![crates.io][ws-server-image]][ws-server-url]
-- [jsonrpc-stdio-server](./stdio) [![crates.io][stdio-server-image]][stdio-server-url]
-- [jsonrpc-derive](./derive) [![crates.io][derive-image]][derive-url]
-- [jsonrpc-server-utils](./server-utils) [![crates.io][server-utils-image]][server-utils-url]
-- [jsonrpc-pubsub](./pubsub) [![crates.io][pubsub-image]][pubsub-url]
+- [tetsy-jsonrpc-core](./core) [![crates.io][core-image]][core-url]
+- [tetsy-jsonrpc-core-client](./core-client) [![crates.io][core-client-image]][core-client-url]
+- [tetsy-jsonrpc-http-server](./http) [![crates.io][http-server-image]][http-server-url]
+- [tetsy-jsonrpc-ipc-server](./ipc) [![crates.io][ipc-server-image]][ipc-server-url]
+- [tetsy-jsonrpc-tcp-server](./tcp) [![crates.io][tcp-server-image]][tcp-server-url]
+- [tetsy-jsonrpc-ws-server](./ws) [![crates.io][ws-server-image]][ws-server-url]
+- [tetsy-jsonrpc-stdio-server](./stdio) [![crates.io][stdio-server-image]][stdio-server-url]
+- [tetsy-jsonrpc-derive](./derive) [![crates.io][derive-image]][derive-url]
+- [tetsy-jsonrpc-server-utils](./server-utils) [![crates.io][server-utils-image]][server-utils-url]
+- [tetsy-jsonrpc-pubsub](./pubsub) [![crates.io][pubsub-image]][pubsub-url]
 
-[core-image]: https://img.shields.io/crates/v/jsonrpc-core.svg
-[core-url]: https://crates.io/crates/jsonrpc-core
-[core-client-image]: https://img.shields.io/crates/v/jsonrpc-core-client.svg
-[core-client-url]: https://crates.io/crates/jsonrpc-core-client
-[http-server-image]: https://img.shields.io/crates/v/jsonrpc-http-server.svg
-[http-server-url]: https://crates.io/crates/jsonrpc-http-server
-[ipc-server-image]: https://img.shields.io/crates/v/jsonrpc-ipc-server.svg
-[ipc-server-url]: https://crates.io/crates/jsonrpc-ipc-server
-[tcp-server-image]: https://img.shields.io/crates/v/jsonrpc-tcp-server.svg
-[tcp-server-url]: https://crates.io/crates/jsonrpc-tcp-server
-[ws-server-image]: https://img.shields.io/crates/v/jsonrpc-ws-server.svg
-[ws-server-url]: https://crates.io/crates/jsonrpc-ws-server
-[stdio-server-image]: https://img.shields.io/crates/v/jsonrpc-stdio-server.svg
-[stdio-server-url]: https://crates.io/crates/jsonrpc-stdio-server
-[derive-image]: https://img.shields.io/crates/v/jsonrpc-derive.svg
-[derive-url]: https://crates.io/crates/jsonrpc-derive
-[server-utils-image]: https://img.shields.io/crates/v/jsonrpc-server-utils.svg
-[server-utils-url]: https://crates.io/crates/jsonrpc-server-utils
-[pubsub-image]: https://img.shields.io/crates/v/jsonrpc-pubsub.svg
-[pubsub-url]: https://crates.io/crates/jsonrpc-pubsub
+[core-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-core.svg
+[core-url]: https://crates.io/crates/tetsy-jsonrpc-core
+[core-client-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-core-client.svg
+[core-client-url]: https://crates.io/crates/tetsy-jsonrpc-core-client
+[http-server-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-http-server.svg
+[http-server-url]: https://crates.io/crates/tetsy-jsonrpc-http-server
+[ipc-server-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-ipc-server.svg
+[ipc-server-url]: https://crates.io/crates/tetsy-jsonrpc-ipc-server
+[tcp-server-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-tcp-server.svg
+[tcp-server-url]: https://crates.io/crates/tetsy-jsonrpc-tcp-server
+[ws-server-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-ws-server.svg
+[ws-server-url]: https://crates.io/crates/tetsy-jsonrpc-ws-server
+[stdio-server-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-stdio-server.svg
+[stdio-server-url]: https://crates.io/crates/tetsy-jsonrpc-stdio-server
+[derive-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-derive.svg
+[derive-url]: https://crates.io/crates/tetsy-jsonrpc-derive
+[server-utils-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-server-utils.svg
+[server-utils-url]: https://crates.io/crates/tetsy-jsonrpc-server-utils
+[pubsub-image]: https://img.shields.io/crates/v/tetsy-jsonrpc-pubsub.svg
+[pubsub-url]: https://crates.io/crates/tetsy-jsonrpc-pubsub
 
 ## Examples
 
@@ -57,8 +57,8 @@ Transport-agnostic `core` and transport servers for `http`, `ipc`, `websockets` 
 ### Basic Usage (with HTTP transport)
 
 ```rust
-use jsonrpc_http_server::jsonrpc_core::{IoHandler, Value, Params};
-use jsonrpc_http_server::{ServerBuilder};
+use tetsy_jsonrpc_http_server::tetsy_jsonrpc_core::{IoHandler, Value, Params};
+use tetsy_jsonrpc_http_server::{ServerBuilder};
 
 fn main() {
 	let mut io = IoHandler::new();
@@ -78,8 +78,8 @@ fn main() {
 ### Basic usage with derive
 
 ```rust
-use jsonrpc_core::Result;
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::Result;
+use tetsy_jsonrpc_derive::rpc;
 
 #[rpc]
 pub trait Rpc {
@@ -96,7 +96,7 @@ impl Rpc for RpcImpl {
 }
 
 fn main() {
-	let mut io = jsonrpc_core::IoHandler::new();
+	let mut io = tetsy_jsonrpc_core::IoHandler::new();
 	io.extend_with(RpcImpl.to_delegate())
 }
 ```
@@ -104,10 +104,10 @@ fn main() {
 ### Client support
 
 ```rust
-use jsonrpc_core_client::transports::local;
-use jsonrpc_core::futures::future::{self, Future, FutureResult};
-use jsonrpc_core::{Error, IoHandler, Result};
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core_client::transports::local;
+use tetsy_jsonrpc_core::futures::future::{self, Future, FutureResult};
+use tetsy_jsonrpc_core::{Error, IoHandler, Result};
+use tetsy_jsonrpc_derive::rpc;
 
 /// Rpc trait
 #[rpc]

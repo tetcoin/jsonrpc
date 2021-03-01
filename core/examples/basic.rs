@@ -1,4 +1,4 @@
-use jsonrpc_core::*;
+use tetsy_jsonrpc_core::*;
 
 fn main() {
 	let mut io = IoHandler::new();

@@ -2,11 +2,11 @@ use std::collections::HashMap;
 use std::sync::{atomic, Arc, RwLock};
 use std::thread;
 
-use jsonrpc_core::futures::Future;
-use jsonrpc_core::{Error, ErrorCode, Result};
-use jsonrpc_derive::rpc;
-use jsonrpc_pubsub::typed;
-use jsonrpc_pubsub::{PubSubHandler, Session, SubscriptionId};
+use tetsy_jsonrpc_core::futures::Future;
+use tetsy_jsonrpc_core::{Error, ErrorCode, Result};
+use tetsy_jsonrpc_derive::rpc;
+use tetsy_jsonrpc_pubsub::typed;
+use tetsy_jsonrpc_pubsub::{PubSubHandler, Session, SubscriptionId};
 
 #[rpc]
 pub trait Rpc {
@@ -79,7 +79,7 @@ fn main() {
 	io.extend_with(rpc.to_delegate());
 
 	let server =
-		jsonrpc_tcp_server::ServerBuilder::with_meta_extractor(io, |context: &jsonrpc_tcp_server::RequestContext| {
+		tetsy_jsonrpc_tcp_server::ServerBuilder::with_meta_extractor(io, |context: &tetsy_jsonrpc_tcp_server::RequestContext| {
 			Arc::new(Session::new(context.sender.clone()))
 		})
 		.start(&"0.0.0.0:3030".parse().unwrap())

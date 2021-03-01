@@ -1,8 +1,8 @@
 //! jsonrpc http server.
 //!
 //! ```no_run
-//! use jsonrpc_core::*;
-//! use jsonrpc_http_server::*;
+//! use tetsy_jsonrpc_core::*;
+//! use tetsy_jsonrpc_http_server::*;
 //!
 //! fn main() {
 //! 	let mut io = IoHandler::new();
@@ -20,11 +20,11 @@
 
 #![deny(missing_docs)]
 
-use jsonrpc_server_utils as server_utils;
+use tetsy_jsonrpc_server_utils as server_utils;
 use net2;
 
 pub use hyper;
-pub use jsonrpc_core;
+pub use tetsy_jsonrpc_core;
 
 #[macro_use]
 extern crate log;
@@ -47,7 +47,7 @@ use crate::jsonrpc::futures::{self, Future, Stream};
 use crate::jsonrpc::MetaIoHandler;
 use crate::server_utils::reactor::{Executor, UninitializedExecutor};
 use hyper::{server, Body};
-use jsonrpc_core as jsonrpc;
+use tetsy_jsonrpc_core as jsonrpc;
 
 pub use crate::handler::ServerHandler;
 pub use crate::response::Response;
@@ -414,7 +414,7 @@ impl<M: jsonrpc::Metadata, S: jsonrpc::Middleware<M>> ServerBuilder<M, S> {
 		let allowed_headers = self.allowed_headers;
 		let request_middleware = self.request_middleware;
 		let allowed_hosts = self.allowed_hosts;
-		let jsonrpc_handler = Rpc {
+		let tetsy_jsonrpc_handler = Rpc {
 			handler: self.handler,
 			extractor: self.meta_extractor,
 		};
@@ -438,7 +438,7 @@ impl<M: jsonrpc::Metadata, S: jsonrpc::Middleware<M>> ServerBuilder<M, S> {
 			allowed_headers.clone(),
 			request_middleware.clone(),
 			allowed_hosts.clone(),
-			jsonrpc_handler.clone(),
+			tetsy_jsonrpc_handler.clone(),
 			rest_api,
 			health_api.clone(),
 			keep_alive,
@@ -460,7 +460,7 @@ impl<M: jsonrpc::Metadata, S: jsonrpc::Middleware<M>> ServerBuilder<M, S> {
 					allowed_headers.clone(),
 					request_middleware.clone(),
 					allowed_hosts.clone(),
-					jsonrpc_handler.clone(),
+					tetsy_jsonrpc_handler.clone(),
 					rest_api,
 					health_api.clone(),
 					keep_alive,
@@ -518,7 +518,7 @@ fn serve<M: jsonrpc::Metadata, S: jsonrpc::Middleware<M>>(
 	allowed_headers: cors::AccessControlAllowHeaders,
 	request_middleware: Arc<dyn RequestMiddleware>,
 	allowed_hosts: AllowedHosts,
-	jsonrpc_handler: Rpc<M, S>,
+	tetsy_jsonrpc_handler: Rpc<M, S>,
 	rest_api: RestApi,
 	health_api: Option<(String, String)>,
 	keep_alive: bool,
@@ -580,7 +580,7 @@ fn serve<M: jsonrpc::Metadata, S: jsonrpc::Middleware<M>>(
 				tcp_stream
 					.map(move |socket| {
 						let service = ServerHandler::new(
-							jsonrpc_handler.downgrade(),
+							tetsy_jsonrpc_handler.downgrade(),
 							cors_domains.clone(),
 							cors_max_age,
 							allowed_headers.clone(),

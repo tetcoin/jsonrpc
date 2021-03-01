@@ -18,7 +18,7 @@ stages:
 
 # test rust stable
 test-linux-stable:
-  image:                           parity/rust-builder:latest
+  image:                           tetcoin/rust-builder:latest
   stage:                           test
   <<:                             *test_and_build
   <<:                             *only
@@ -41,7 +41,7 @@ test-mac-stable:
 
 # check style
 checkstyle-linux-stable:
-  image:                           parity/rust-builder:latest
+  image:                           tetcoin/rust-builder:latest
   stage:                           checkstyle
   script:
     - rustup component add rustfmt

@@ -1,16 +1,16 @@
-use jsonrpc_core;
-use jsonrpc_pubsub;
+use tetsy_jsonrpc_core;
+use tetsy_jsonrpc_pubsub;
 use serde_json;
 #[macro_use]
-extern crate jsonrpc_derive;
+extern crate tetsy_jsonrpc_derive;
 
-use jsonrpc_core::futures::sync::mpsc;
-use jsonrpc_pubsub::typed::Subscriber;
-use jsonrpc_pubsub::{PubSubHandler, PubSubMetadata, Session, SubscriptionId};
+use tetsy_jsonrpc_core::futures::sync::mpsc;
+use tetsy_jsonrpc_pubsub::typed::Subscriber;
+use tetsy_jsonrpc_pubsub::{PubSubHandler, PubSubMetadata, Session, SubscriptionId};
 use std::sync::Arc;
 
 pub enum MyError {}
-impl From<MyError> for jsonrpc_core::Error {
+impl From<MyError> for tetsy_jsonrpc_core::Error {
 	fn from(_e: MyError) -> Self {
 		unreachable!()
 	}
@@ -72,7 +72,7 @@ impl Rpc for RpcImpl {
 
 #[derive(Clone, Default)]
 struct Metadata;
-impl jsonrpc_core::Metadata for Metadata {}
+impl tetsy_jsonrpc_core::Metadata for Metadata {}
 impl PubSubMetadata for Metadata {
 	fn session(&self) -> Option<Arc<Session>> {
 		let (tx, _rx) = mpsc::channel(1);
@@ -99,8 +99,8 @@ fn test_invalid_trailing_pubsub_params() {
 		"id": 1
 	}"#;
 
-	let expected: jsonrpc_core::Response = serde_json::from_str(expected).unwrap();
-	let result: jsonrpc_core::Response = serde_json::from_str(&res.unwrap()).unwrap();
+	let expected: tetsy_jsonrpc_core::Response = serde_json::from_str(expected).unwrap();
+	let result: tetsy_jsonrpc_core::Response = serde_json::from_str(&res.unwrap()).unwrap();
 	assert_eq!(expected, result);
 }
 
@@ -120,8 +120,8 @@ fn test_subscribe_with_alias() {
 		"id": 1
 	}"#;
 
-	let expected: jsonrpc_core::Response = serde_json::from_str(expected).unwrap();
-	let result: jsonrpc_core::Response = serde_json::from_str(&res.unwrap()).unwrap();
+	let expected: tetsy_jsonrpc_core::Response = serde_json::from_str(expected).unwrap();
+	let result: tetsy_jsonrpc_core::Response = serde_json::from_str(&res.unwrap()).unwrap();
 	assert_eq!(expected, result);
 }
 
@@ -141,7 +141,7 @@ fn test_subscribe_alternate_method() {
 		"id": 1
 	}"#;
 
-	let expected: jsonrpc_core::Response = serde_json::from_str(expected).unwrap();
-	let result: jsonrpc_core::Response = serde_json::from_str(&res.unwrap()).unwrap();
+	let expected: tetsy_jsonrpc_core::Response = serde_json::from_str(expected).unwrap();
+	let result: tetsy_jsonrpc_core::Response = serde_json::from_str(&res.unwrap()).unwrap();
 	assert_eq!(expected, result);
 }

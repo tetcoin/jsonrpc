@@ -42,20 +42,20 @@ pub fn generate_client_module(
 			)
 		})
 		.unzip();
-	let client_name = crate_name("jsonrpc-core-client")?;
+	let client_name = crate_name("tetsy-jsonrpc-core-client")?;
 	Ok(quote! {
 		/// The generated client module.
 		pub mod gen_client {
-			use #client_name as _jsonrpc_core_client;
+			use #client_name as _tetsy_jsonrpc_core_client;
 			use super::*;
-			use _jsonrpc_core::{
+			use _tetsy_jsonrpc_core::{
 				Call, Error, ErrorCode, Id, MethodCall, Params, Request,
 				Response, Version,
 			};
-			use _jsonrpc_core::futures::prelude::*;
-			use _jsonrpc_core::futures::sync::{mpsc, oneshot};
-			use _jsonrpc_core::serde_json::{self, Value};
-			use _jsonrpc_core_client::{RpcChannel, RpcError, RpcFuture, TypedClient, TypedSubscriptionStream};
+			use _tetsy_jsonrpc_core::futures::prelude::*;
+			use _tetsy_jsonrpc_core::futures::sync::{mpsc, oneshot};
+			use _tetsy_jsonrpc_core::serde_json::{self, Value};
+			use _tetsy_jsonrpc_core_client::{RpcChannel, RpcError, RpcFuture, TypedClient, TypedSubscriptionStream};
 
 			/// The Client.
 			#[derive(Clone)]

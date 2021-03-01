@@ -1,6 +1,6 @@
-use jsonrpc_http_server::jsonrpc_core::futures;
-use jsonrpc_http_server::jsonrpc_core::{IoHandler, Value};
-use jsonrpc_http_server::{hyper, AccessControlAllowOrigin, DomainsValidation, Response, RestApi, ServerBuilder};
+use tetsy_jsonrpc_http_server::tetsy_jsonrpc_core::futures;
+use tetsy_jsonrpc_http_server::tetsy_jsonrpc_core::{IoHandler, Value};
+use tetsy_jsonrpc_http_server::{hyper, AccessControlAllowOrigin, DomainsValidation, Response, RestApi, ServerBuilder};
 
 fn main() {
 	let mut io = IoHandler::default();
