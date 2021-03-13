@@ -507,7 +507,7 @@ mod tests {
 	fn should_support_wildcards() {
 		// given
 		let origin1 = Some("http://tetcoin.org".into());
-		let origin2 = Some("http://tetcoin.orgt".into());
+		let origin2 = Some("http://tetcoin.org".into());
 		let origin3 = Some("chrome-extension://test".into());
 		let host = None;
 		let allowed = Some(vec![
