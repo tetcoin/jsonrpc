@@ -1,13 +1,13 @@
-//! High level, typed wrapper for `jsonrpc_core`.
+//! High level, typed wrapper for `tetsy_jsonrpc_core`.
 //!
 //! Enables creation of "Service" objects grouping a set of RPC methods together in a typed manner.
 //!
 //! Example
 //!
 //! ```
-//! use jsonrpc_derive::rpc;
-//! use jsonrpc_core::{IoHandler, Error, Result};
-//! use jsonrpc_core::futures::future::{self, FutureResult};
+//! use tetsy_jsonrpc_derive::rpc;
+//! use tetsy_jsonrpc_core::{IoHandler, Error, Result};
+//! use tetsy_jsonrpc_core::futures::future::{self, FutureResult};
 //!
 //! #[rpc(server)]
 //! pub trait Rpc {
@@ -55,10 +55,10 @@
 //! use std::sync::{atomic, Arc, RwLock};
 //! use std::collections::HashMap;
 //!
-//! use jsonrpc_core::{Error, ErrorCode, Result};
-//! use jsonrpc_core::futures::Future;
-//! use jsonrpc_derive::rpc;
-//! use jsonrpc_pubsub::{Session, PubSubHandler, SubscriptionId, typed::{Subscriber, Sink}};
+//! use tetsy_jsonrpc_core::{Error, ErrorCode, Result};
+//! use tetsy_jsonrpc_core::futures::Future;
+//! use tetsy_jsonrpc_derive::rpc;
+//! use tetsy_jsonrpc_pubsub::{Session, PubSubHandler, SubscriptionId, typed::{Subscriber, Sink}};
 //!
 //! #[rpc]
 //! pub trait Rpc {
@@ -127,10 +127,10 @@
 //! Client Example
 //!
 //! ```
-//! use jsonrpc_core_client::transports::local;
-//! use jsonrpc_core::futures::future::{self, Future, FutureResult};
-//! use jsonrpc_core::{Error, IoHandler, Result};
-//! use jsonrpc_derive::rpc;
+//! use tetsy_jsonrpc_core_client::transports::local;
+//! use tetsy_jsonrpc_core::futures::future::{self, Future, FutureResult};
+//! use tetsy_jsonrpc_core::{Error, IoHandler, Result};
+//! use tetsy_jsonrpc_derive::rpc;
 //!
 //! /// Rpc trait
 //! #[rpc]

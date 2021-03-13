@@ -1,5 +1,5 @@
-use jsonrpc_http_server::jsonrpc_core::*;
-use jsonrpc_http_server::{AccessControlAllowOrigin, DomainsValidation, ServerBuilder};
+use tetsy_jsonrpc_http_server::tetsy_jsonrpc_core::*;
+use tetsy_jsonrpc_http_server::{AccessControlAllowOrigin, DomainsValidation, ServerBuilder};
 
 fn main() {
 	let mut io = IoHandler::default();

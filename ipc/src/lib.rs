@@ -2,9 +2,9 @@
 
 #![deny(missing_docs)]
 
-use jsonrpc_server_utils as server_utils;
+use tetsy_jsonrpc_server_utils as server_utils;
 
-pub use jsonrpc_core;
+pub use tetsy_jsonrpc_core;
 
 #[macro_use]
 extern crate log;
@@ -20,7 +20,7 @@ mod meta;
 mod select_with_weak;
 mod server;
 
-use jsonrpc_core as jsonrpc;
+use tetsy_jsonrpc_core as jsonrpc;
 
 pub use crate::meta::{MetaExtractor, NoopExtractor, RequestContext};
 pub use crate::server::{CloseHandle, SecurityAttributes, Server, ServerBuilder};

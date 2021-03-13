@@ -55,7 +55,7 @@ impl MethodRegistration {
 					move |base, id, meta| {
 						use self::_futures::{Future, IntoFuture};
 						Self::#unsub_method_ident(base, meta, id).into_future()
-							.map(|value| _jsonrpc_core::to_value(value)
+							.map(|value| _tetsy_jsonrpc_core::to_value(value)
 									.expect("Expected always-serializable type; qed"))
 							.map_err(Into::into)
 					}
@@ -121,9 +121,9 @@ pub fn generate_trait_item_method(
 	has_pubsub_methods: bool,
 ) -> Result<syn::TraitItemMethod> {
 	let io_delegate_type = if has_pubsub_methods {
-		quote!(_jsonrpc_pubsub::IoDelegate)
+		quote!(_tetsy_jsonrpc_pubsub::IoDelegate)
 	} else {
-		quote!(_jsonrpc_core::IoDelegate)
+		quote!(_tetsy_jsonrpc_core::IoDelegate)
 	};
 	let add_methods = methods
 		.iter()
@@ -145,7 +145,7 @@ pub fn generate_trait_item_method(
 	} else {
 		parse_quote! {
 			/// Create an `IoDelegate`, wiring rpc calls to the trait methods.
-			fn to_delegate<M: _jsonrpc_core::Metadata>(self) -> #io_delegate_type<Self, M> {
+			fn to_delegate<M: _tetsy_jsonrpc_core::Metadata>(self) -> #io_delegate_type<Self, M> {
 				#to_delegate_body
 			}
 		}
@@ -239,7 +239,7 @@ impl RpcMethod {
 			} else if param_types.is_empty() {
 				quote! { let params = params.expect_no_params(); }
 			} else if self.attr.params_style == Some(ParamStyle::Raw) {
-				quote! { let params: _jsonrpc_core::Result<_> = Ok((params,)); }
+				quote! { let params: _tetsy_jsonrpc_core::Result<_> = Ok((params,)); }
 			} else if self.attr.params_style == Some(ParamStyle::Positional) {
 				quote! { let params = params.parse::<(#(#param_types, )*)>(); }
 			} else
@@ -260,7 +260,7 @@ impl RpcMethod {
 		let match_params = if is_subscribe {
 			quote! {
 				Ok((#(#tuple_fields, )*)) => {
-					let subscriber = _jsonrpc_pubsub::typed::Subscriber::new(subscriber);
+					let subscriber = _tetsy_jsonrpc_pubsub::typed::Subscriber::new(subscriber);
 					(method)#method_call
 				},
 				Err(e) => {
@@ -281,9 +281,9 @@ impl RpcMethod {
 					use self::_futures::{Future, IntoFuture};
 					let fut = (method)#method_call
 						.into_future()
-						.map(|value| _jsonrpc_core::to_value(value)
+						.map(|value| _tetsy_jsonrpc_core::to_value(value)
 							.expect("Expected always-serializable type; qed"))
-						.map_err(Into::into as fn(_) -> _jsonrpc_core::Error);
+						.map_err(Into::into as fn(_) -> _tetsy_jsonrpc_core::Error);
 					_futures::future::Either::A(fut)
 				},
 				Err(e) => _futures::future::Either::B(_futures::failed(e)),
@@ -369,17 +369,17 @@ impl RpcMethod {
 
 		quote! {
 			let passed_args_num = match params {
-				_jsonrpc_core::Params::Array(ref v) => Ok(v.len()),
-				_jsonrpc_core::Params::None => Ok(0),
-				_ => Err(_jsonrpc_core::Error::invalid_params("`params` should be an array"))
+				_tetsy_jsonrpc_core::Params::Array(ref v) => Ok(v.len()),
+				_tetsy_jsonrpc_core::Params::None => Ok(0),
+				_ => Err(_tetsy_jsonrpc_core::Error::invalid_params("`params` should be an array"))
 			};
 
 			let params = passed_args_num.and_then(|passed_args_num| {
 				match passed_args_num {
-					_ if passed_args_num < #required_args_num => Err(_jsonrpc_core::Error::invalid_params(
+					_ if passed_args_num < #required_args_num => Err(_tetsy_jsonrpc_core::Error::invalid_params(
 						format!("`params` should have at least {} argument(s)", #required_args_num))),
 					#(#switch_branches),*,
-					_ => Err(_jsonrpc_core::Error::invalid_params_with_details(
+					_ => Err(_tetsy_jsonrpc_core::Error::invalid_params_with_details(
 						format!("Expected from {} to {} parameters.", #required_args_num, #total_args_num),
 						format!("Got: {}", passed_args_num))),
 				}
@@ -472,17 +472,17 @@ pub fn generate_where_clause_serialization_predicates(
 			// add json serialization trait bounds
 			if client {
 				if visitor.server_to_client_type_params.contains(&ty.ident) {
-					bounds.push(parse_quote!(_jsonrpc_core::serde::de::DeserializeOwned))
+					bounds.push(parse_quote!(_tetsy_jsonrpc_core::serde::de::DeserializeOwned))
 				}
 				if visitor.client_to_server_type_params.contains(&ty.ident) {
-					bounds.push(parse_quote!(_jsonrpc_core::serde::Serialize))
+					bounds.push(parse_quote!(_tetsy_jsonrpc_core::serde::Serialize))
 				}
 			} else {
 				if visitor.server_to_client_type_params.contains(&ty.ident) {
-					bounds.push(parse_quote!(_jsonrpc_core::serde::Serialize))
+					bounds.push(parse_quote!(_tetsy_jsonrpc_core::serde::Serialize))
 				}
 				if visitor.client_to_server_type_params.contains(&ty.ident) {
-					bounds.push(parse_quote!(_jsonrpc_core::serde::de::DeserializeOwned))
+					bounds.push(parse_quote!(_tetsy_jsonrpc_core::serde::de::DeserializeOwned))
 				}
 			}
 

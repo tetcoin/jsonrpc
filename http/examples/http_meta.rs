@@ -1,5 +1,5 @@
-use jsonrpc_http_server::jsonrpc_core::*;
-use jsonrpc_http_server::{cors::AccessControlAllowHeaders, hyper, RestApi, ServerBuilder};
+use tetsy_jsonrpc_http_server::tetsy_jsonrpc_core::*;
+use tetsy_jsonrpc_http_server::{cors::AccessControlAllowHeaders, hyper, RestApi, ServerBuilder};
 
 #[derive(Default, Clone)]
 struct Meta {

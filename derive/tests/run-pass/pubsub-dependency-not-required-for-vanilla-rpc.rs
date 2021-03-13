@@ -1,5 +1,5 @@
-use jsonrpc_derive::rpc;
-use jsonrpc_core::{Result, IoHandler};
+use tetsy_jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::{Result, IoHandler};
 
 #[rpc]
 pub trait Rpc {

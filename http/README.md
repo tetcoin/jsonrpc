@@ -1,7 +1,7 @@
-# jsonrpc-http-server
+# tetsy-jsonrpc-http-server
 Rust http server using JSON-RPC 2.0.
 
-[Documentation](http://paritytech.github.io/jsonrpc/jsonrpc_http_server/index.html)
+[Documentation](http://tetcoin.github.io/tetsy-jsonrpc/tetsy_jsonrpc_http_server/index.html)
 
 ## Example
 
@@ -9,14 +9,14 @@ Rust http server using JSON-RPC 2.0.
 
 ```
 [dependencies]
-jsonrpc-http-server = "14.2"
+tetsy-jsonrpc-http-server = "14.2"
 ```
 
 `main.rs`
 
 ```rust
-use jsonrpc_http_server::*;
-use jsonrpc_http_server::jsonrpc_core::*;
+use tetsy_jsonrpc_http_server::*;
+use tetsy_jsonrpc_http_server::tetsy_jsonrpc_core::*;
 
 fn main() {
 	let mut io = IoHandler::default();

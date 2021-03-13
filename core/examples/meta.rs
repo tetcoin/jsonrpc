@@ -1,5 +1,5 @@
-use jsonrpc_core::futures::Future;
-use jsonrpc_core::*;
+use tetsy_jsonrpc_core::futures::Future;
+use tetsy_jsonrpc_core::*;
 
 #[derive(Clone, Default)]
 struct Meta(usize);

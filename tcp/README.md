@@ -1,7 +1,7 @@
-# jsonrpc-tcp-server
+# tetsy-jsonrpc-tcp-server
 TCP server for JSON-RPC 2.0.
 
-[Documentation](http://paritytech.github.io/jsonrpc/jsonrpc_tcp_server/index.html)
+[Documentation](http://tetcoin.github.io/tetsy-jsonrpc/tetsy_jsonrpc_tcp_server/index.html)
 
 ## Example
 
@@ -9,14 +9,14 @@ TCP server for JSON-RPC 2.0.
 
 ```
 [dependencies]
-jsonrpc-tcp-server = "14.2"
+tetsy-jsonrpc-tcp-server = "14.2"
 ```
 
 `main.rs`
 
 ```rust
-use jsonrpc_tcp_server::*;
-use jsonrpc_tcp_server::jsonrpc_core::*;
+use tetsy_jsonrpc_tcp_server::*;
+use tetsy_jsonrpc_tcp_server::tetsy_jsonrpc_core::*;
 
 fn main() {
 	let mut io = IoHandler::default();

@@ -1,11 +1,11 @@
-extern crate jsonrpc_core;
-extern crate jsonrpc_core_client;
+extern crate tetsy_jsonrpc_core;
+extern crate tetsy_jsonrpc_core_client;
 #[macro_use]
-extern crate jsonrpc_derive;
+extern crate tetsy_jsonrpc_derive;
 
-use jsonrpc_core::IoHandler;
-use jsonrpc_core::futures::future::Future;
-use jsonrpc_core_client::transports::local;
+use tetsy_jsonrpc_core::IoHandler;
+use tetsy_jsonrpc_core::futures::future::Future;
+use tetsy_jsonrpc_core_client::transports::local;
 
 #[rpc(client)]
 pub trait Rpc {

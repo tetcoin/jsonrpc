@@ -1,12 +1,12 @@
-use jsonrpc_core;
+use tetsy_jsonrpc_core;
 
-use self::jsonrpc_core::{Error, ErrorCode, IoHandler, Params, Value};
+use self::tetsy_jsonrpc_core::{Error, ErrorCode, IoHandler, Params, Value};
 use std::io::{Read, Write};
 use std::net::TcpStream;
 use std::str::Lines;
 use std::time::Duration;
 
-use self::jsonrpc_core::futures::{self, Future};
+use self::tetsy_jsonrpc_core::futures::{self, Future};
 use super::*;
 
 fn serve_hosts(hosts: Vec<Host>) -> Server {

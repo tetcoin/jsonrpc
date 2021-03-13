@@ -1,5 +1,5 @@
-use jsonrpc_core::{IoHandler, Response, Result};
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::{IoHandler, Response, Result};
+use tetsy_jsonrpc_derive::rpc;
 use serde_json;
 
 #[rpc]

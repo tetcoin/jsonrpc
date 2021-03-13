@@ -7,7 +7,7 @@ pub struct RequestContext<'a> {
 	/// Session ID
 	pub session_id: session::SessionId,
 	/// Remote UDS endpoint
-	pub endpoint_addr: &'a ::parity_tokio_ipc::RemoteId,
+	pub endpoint_addr: &'a ::tetsy_tokio_ipc::RemoteId,
 	/// Direct pipe sender
 	pub sender: mpsc::Sender<String>,
 }

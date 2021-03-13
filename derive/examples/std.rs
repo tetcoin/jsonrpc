@@ -1,9 +1,9 @@
 //! A simple example
 #![deny(missing_docs)]
-use jsonrpc_core::futures::future::{self, Future, FutureResult};
-use jsonrpc_core::{Error, IoHandler, Result};
-use jsonrpc_core_client::transports::local;
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::futures::future::{self, Future, FutureResult};
+use tetsy_jsonrpc_core::{Error, IoHandler, Result};
+use tetsy_jsonrpc_core_client::transports::local;
+use tetsy_jsonrpc_derive::rpc;
 
 /// Rpc trait
 #[rpc]

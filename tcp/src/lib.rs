@@ -1,8 +1,8 @@
 //! jsonrpc server over tcp/ip
 //!
 //! ```no_run
-//! use jsonrpc_core::*;
-//! use jsonrpc_tcp_server::ServerBuilder;
+//! use tetsy_jsonrpc_core::*;
+//! use tetsy_jsonrpc_tcp_server::ServerBuilder;
 //!
 //! fn main() {
 //! 	let mut io = IoHandler::default();
@@ -19,9 +19,9 @@
 
 #![deny(missing_docs)]
 
-use jsonrpc_server_utils as server_utils;
+use tetsy_jsonrpc_server_utils as server_utils;
 
-pub use jsonrpc_core;
+pub use tetsy_jsonrpc_core;
 
 #[macro_use]
 extern crate log;
@@ -40,7 +40,7 @@ mod logger;
 #[cfg(test)]
 mod tests;
 
-use jsonrpc_core as jsonrpc;
+use tetsy_jsonrpc_core as jsonrpc;
 
 pub use self::server_utils::{codecs::Separator, tokio};
 pub use crate::dispatch::{Dispatcher, PushMessageError};

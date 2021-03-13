@@ -1,7 +1,7 @@
 #[macro_use]
-extern crate jsonrpc_derive;
-extern crate jsonrpc_core;
-extern crate jsonrpc_pubsub;
+extern crate tetsy_jsonrpc_derive;
+extern crate tetsy_jsonrpc_core;
+extern crate tetsy_jsonrpc_pubsub;
 
 #[rpc]
 pub trait Rpc {

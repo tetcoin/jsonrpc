@@ -1,6 +1,6 @@
-use jsonrpc_core::futures::future::{self, FutureResult};
-use jsonrpc_core::{Error, IoHandler, Result};
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::futures::future::{self, FutureResult};
+use tetsy_jsonrpc_core::{Error, IoHandler, Result};
+use tetsy_jsonrpc_derive::rpc;
 use std::collections::BTreeMap;
 
 #[rpc]

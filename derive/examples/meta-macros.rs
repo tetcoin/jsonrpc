@@ -1,9 +1,9 @@
 use std::collections::BTreeMap;
 
-use jsonrpc_core::futures::future::FutureResult;
-use jsonrpc_core::types::params::Params;
-use jsonrpc_core::{futures, Error, MetaIoHandler, Metadata, Result, Value};
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::futures::future::FutureResult;
+use tetsy_jsonrpc_core::types::params::Params;
+use tetsy_jsonrpc_core::{futures, Error, MetaIoHandler, Metadata, Result, Value};
+use tetsy_jsonrpc_derive::rpc;
 
 #[derive(Clone)]
 struct Meta(String);
@@ -82,7 +82,7 @@ fn main() {
 	io.extend_with(rpc.to_delegate());
 
 	let server =
-		jsonrpc_tcp_server::ServerBuilder::with_meta_extractor(io, |context: &jsonrpc_tcp_server::RequestContext| {
+		tetsy_jsonrpc_tcp_server::ServerBuilder::with_meta_extractor(io, |context: &tetsy_jsonrpc_tcp_server::RequestContext| {
 			Meta(format!("{}", context.peer_addr))
 		})
 		.start(&"0.0.0.0:3030".parse().unwrap())

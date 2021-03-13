@@ -2,10 +2,10 @@
 
 #![deny(missing_docs)]
 
-use jsonrpc_server_utils as server_utils;
+use tetsy_jsonrpc_server_utils as server_utils;
 
-pub use jsonrpc_core;
-pub use parity_ws as ws;
+pub use tetsy_jsonrpc_core;
+pub use tetsy_ws as ws;
 
 #[macro_use]
 extern crate log;
@@ -18,7 +18,7 @@ mod session;
 #[cfg(test)]
 mod tests;
 
-use jsonrpc_core as core;
+use tetsy_jsonrpc_core as core;
 
 pub use self::error::{Error, Result};
 pub use self::metadata::{MetaExtractor, NoopExtractor, RequestContext};

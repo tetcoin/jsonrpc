@@ -1,8 +1,8 @@
-# jsonrpc-stdio-server
+# tetsy-jsonrpc-stdio-server
 STDIN/STDOUT server for JSON-RPC 2.0.
 Takes one request per line and outputs each response on a new line.
 
-[Documentation](http://paritytech.github.io/jsonrpc/jsonrpc_stdio_server/index.html)
+[Documentation](http://tetcoin.github.io/tetsy-jsonrpc/tetsy_jsonrpc_stdio_server/index.html)
 
 ## Example
 
@@ -10,14 +10,14 @@ Takes one request per line and outputs each response on a new line.
 
 ```
 [dependencies]
-jsonrpc-stdio-server = "14.2"
+tetsy-jsonrpc-stdio-server = "14.2"
 ```
 
 `main.rs`
 
 ```rust
-use jsonrpc_stdio_server::ServerBuilder;
-use jsonrpc_stdio_server::jsonrpc_core::*;
+use tetsy_jsonrpc_stdio_server::ServerBuilder;
+use tetsy_jsonrpc_stdio_server::tetsy_jsonrpc_core::*;
 
 fn main() {
 	let mut io = IoHandler::default();

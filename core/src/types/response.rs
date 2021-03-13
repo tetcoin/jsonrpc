@@ -181,7 +181,7 @@ fn failure_output_serialize() {
 }
 
 #[test]
-fn failure_output_serialize_jsonrpc_1() {
+fn failure_output_serialize_tetsy_jsonrpc_1() {
 	use serde_json;
 
 	let fo = Output::Failure(Failure {

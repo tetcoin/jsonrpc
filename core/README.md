@@ -1,7 +1,7 @@
-# jsonrpc-core
+# tetsy-jsonrpc-core
 Transport agnostic rust implementation of JSON-RPC 2.0 Specification.
 
-[Documentation](http://paritytech.github.io/jsonrpc/jsonrpc_core/index.html)
+[Documentation](http://tetcoin.github.io/tetsy-jsonrpc/tetsy_jsonrpc_core/index.html)
 
 - [x] - server side
 - [x] - client side
@@ -13,13 +13,13 @@ Transport agnostic rust implementation of JSON-RPC 2.0 Specification.
 
 ```
 [dependencies]
-jsonrpc-core = "4.0"
+tetsy-jsonrpc-core = "4.0"
 ```
 
 `main.rs`
 
 ```rust
-use jsonrpc_core::*;
+use tetsy_jsonrpc_core::*;
 
 fn main() {
 	let mut io = IoHandler::default();
@@ -39,8 +39,8 @@ fn main() {
 `main.rs`
 
 ```rust
-use jsonrpc_core::*;
-use jsonrpc_core::futures::Future;
+use tetsy_jsonrpc_core::*;
+use tetsy_jsonrpc_core::futures::Future;
 
 fn main() {
 	let io = IoHandler::new();

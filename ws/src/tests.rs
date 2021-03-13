@@ -91,7 +91,7 @@ fn serve(port: u16) -> (Server, Arc<AtomicUsize>) {
 	});
 
 	let server = ServerBuilder::new(io)
-		.allowed_origins(DomainsValidation::AllowOnly(vec!["https://parity.io".into()]))
+		.allowed_origins(DomainsValidation::AllowOnly(vec!["https://tetcoin.org".into()]))
 		.allowed_hosts(DomainsValidation::AllowOnly(vec![format!("127.0.0.1:{}", port).into()]))
 		.request_middleware(|req: &ws::Request| {
 			if req.resource() == "/intercepted" {
@@ -160,7 +160,7 @@ fn should_allow_whitelisted_origins() {
 		"\
 		 GET / HTTP/1.1\r\n\
 		 Host: 127.0.0.1:30003\r\n\
-		 Origin: https://parity.io\r\n\
+		 Origin: https://tetcoin.org\r\n\
 		 Connection: close\r\n\
 		 \r\n\
 		 {}\r\n\
@@ -182,7 +182,7 @@ fn should_intercept_in_middleware() {
 		"\
 		 GET /intercepted HTTP/1.1\r\n\
 		 Host: 127.0.0.1:30004\r\n\
-		 Origin: https://parity.io\r\n\
+		 Origin: https://tetcoin.org\r\n\
 		 Connection: close\r\n\
 		 \r\n\
 		 {}\r\n\

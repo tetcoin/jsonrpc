@@ -3,8 +3,8 @@
 //! Right now it supports only server side handling requests.
 //!
 //! ```rust
-//! use jsonrpc_core::*;
-//! use jsonrpc_core::futures::Future;
+//! use tetsy_jsonrpc_core::*;
+//! use tetsy_jsonrpc_core::futures::Future;
 //!
 //! fn main() {
 //! 	let mut io = IoHandler::new();

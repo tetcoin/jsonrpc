@@ -1,7 +1,7 @@
 //! Client transport implementations
 
-use jsonrpc_core::{Call, Error, Id, MethodCall, Notification, Params, Version};
-use jsonrpc_pubsub::SubscriptionId;
+use tetsy_jsonrpc_core::{Call, Error, Id, MethodCall, Notification, Params, Version};
+use tetsy_jsonrpc_pubsub::SubscriptionId;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 
@@ -38,7 +38,7 @@ impl RequestBuilder {
 	/// Build a single request with the next available id
 	fn single_request(&mut self, method: String, params: Params) -> (Id, String) {
 		let id = self.next_id();
-		let request = jsonrpc_core::Request::Single(Call::MethodCall(MethodCall {
+		let request = tetsy_jsonrpc_core::Request::Single(Call::MethodCall(MethodCall {
 			jsonrpc: Some(Version::V2),
 			method,
 			params,
@@ -63,7 +63,7 @@ impl RequestBuilder {
 	}
 
 	fn notification(&mut self, msg: &NotifyMessage) -> String {
-		let request = jsonrpc_core::Request::Single(Call::Notification(Notification {
+		let request = tetsy_jsonrpc_core::Request::Single(Call::Notification(Notification {
 			jsonrpc: Some(Version::V2),
 			method: msg.method.clone(),
 			params: msg.params.clone(),
@@ -81,7 +81,7 @@ impl RequestBuilder {
 pub fn parse_response(
 	response: &str,
 ) -> Result<(Id, Result<Value, RpcError>, Option<String>, Option<SubscriptionId>), RpcError> {
-	jsonrpc_core::serde_from_str::<ClientResponse>(response)
+	tetsy_jsonrpc_core::serde_from_str::<ClientResponse>(response)
 		.map_err(|e| RpcError::ParseError(e.to_string(), e.into()))
 		.map(|response| {
 			let id = response.id().unwrap_or(Id::Null);
@@ -99,9 +99,9 @@ pub fn parse_response(
 #[serde(untagged)]
 pub enum ClientResponse {
 	/// A regular JSON-RPC request output (single response).
-	Output(jsonrpc_core::Output),
+	Output(tetsy_jsonrpc_core::Output),
 	/// A notification.
-	Notification(jsonrpc_core::Notification),
+	Notification(tetsy_jsonrpc_core::Notification),
 }
 
 impl ClientResponse {
@@ -125,7 +125,7 @@ impl ClientResponse {
 	pub fn subscription_id(&self) -> Option<SubscriptionId> {
 		match *self {
 			ClientResponse::Notification(ref n) => match &n.params {
-				jsonrpc_core::Params::Map(map) => match map.get("subscription") {
+				tetsy_jsonrpc_core::Params::Map(map) => match map.get("subscription") {
 					Some(value) => SubscriptionId::parse_value(value),
 					None => None,
 				},
@@ -166,13 +166,13 @@ impl From<ClientResponse> for Result<Value, Error> {
 #[cfg(test)]
 mod tests {
 	use super::*;
-	use jsonrpc_core::{Failure, Notification, Output, Params, Success, Value, Version};
+	use tetsy_jsonrpc_core::{Failure, Notification, Output, Params, Success, Value, Version};
 
 	#[test]
 	fn notification_deserialize() {
 		let dsr = r#"{"jsonrpc":"2.0","method":"hello","params":[10]}"#;
 
-		let deserialized: ClientResponse = jsonrpc_core::serde_from_str(dsr).unwrap();
+		let deserialized: ClientResponse = tetsy_jsonrpc_core::serde_from_str(dsr).unwrap();
 		assert_eq!(
 			deserialized,
 			ClientResponse::Notification(Notification {
@@ -187,7 +187,7 @@ mod tests {
 	fn success_deserialize() {
 		let dsr = r#"{"jsonrpc":"2.0","result":1,"id":1}"#;
 
-		let deserialized: ClientResponse = jsonrpc_core::serde_from_str(dsr).unwrap();
+		let deserialized: ClientResponse = tetsy_jsonrpc_core::serde_from_str(dsr).unwrap();
 		assert_eq!(
 			deserialized,
 			ClientResponse::Output(Output::Success(Success {
@@ -202,7 +202,7 @@ mod tests {
 	fn failure_output_deserialize() {
 		let dfo = r#"{"jsonrpc":"2.0","error":{"code":-32700,"message":"Parse error"},"id":1}"#;
 
-		let deserialized: ClientResponse = jsonrpc_core::serde_from_str(dfo).unwrap();
+		let deserialized: ClientResponse = tetsy_jsonrpc_core::serde_from_str(dfo).unwrap();
 		assert_eq!(
 			deserialized,
 			ClientResponse::Output(Output::Failure(Failure {

@@ -1,17 +1,17 @@
 [package]
-authors = ["Parity Technologies <admin@parity.io>"]
-description = "STDIN/STDOUT server for JSON-RPC"
-documentation = "https://docs.rs/jsonrpc-stdio-server/"
+authors = ["Parity Technologies <admin@parity.io>", "Tetcoin Developers <support@tetcoin.org>"]
+description = "Tetsy STDIN/STDOUT server for JSON-RPC"
+documentation = "https://docs.rs/tetsy-jsonrpc-stdio-server/"
 edition = "2018"
-homepage = "https://github.com/paritytech/jsonrpc"
+homepage = "https://core.tetcoin.org"
 license = "MIT"
-name = "jsonrpc-stdio-server"
-repository = "https://github.com/paritytech/jsonrpc"
+name = "tetsy-jsonrpc-stdio-server"
+repository = "https://github.com/tetcoin/tetsy-jsonrpc"
 version = "15.1.0"
 
 [dependencies]
 futures = "0.1.23"
-jsonrpc-core = { version = "15.1.0", path = "../core" }
+tetsy-jsonrpc-core = { version = "15.1.0", path = "../core" }
 log = "0.4"
 tokio = "0.1.7"
 tokio-codec = "0.1.0"
@@ -23,4 +23,4 @@ lazy_static = "1.0"
 env_logger = "0.7"
 
 [badges]
-travis-ci = { repository = "paritytech/jsonrpc", branch = "master"}
+travis-ci = { repository = "tetcoin/tetsy-jsonrpc", branch = "master"}

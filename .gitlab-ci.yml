@@ -21,7 +21,7 @@ variables:                         &default-vars
     - /^[0-9]+$/
 
 .docker-env:                       &docker-env
-  image:                           paritytech/ci-linux:production
+  image:                           tetcoin/ci-linux:production
   before_script:
     - rustup show
     - cargo --version

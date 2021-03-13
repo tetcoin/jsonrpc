@@ -1,6 +1,6 @@
 use env_logger;
-use jsonrpc_tcp_server::jsonrpc_core::*;
-use jsonrpc_tcp_server::ServerBuilder;
+use tetsy_jsonrpc_tcp_server::tetsy_jsonrpc_core::*;
+use tetsy_jsonrpc_tcp_server::ServerBuilder;
 
 fn main() {
 	env_logger::init();

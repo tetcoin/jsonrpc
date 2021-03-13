@@ -16,7 +16,7 @@ use crate::{utils, AllowedHosts, CorsDomains, RequestMiddleware, RequestMiddlewa
 
 /// jsonrpc http request handler.
 pub struct ServerHandler<M: Metadata = (), S: Middleware<M> = middleware::Noop> {
-	jsonrpc_handler: WeakRpc<M, S>,
+	tetsy_jsonrpc_handler: WeakRpc<M, S>,
 	allowed_hosts: AllowedHosts,
 	cors_domains: CorsDomains,
 	cors_max_age: Option<u32>,
@@ -31,7 +31,7 @@ pub struct ServerHandler<M: Metadata = (), S: Middleware<M> = middleware::Noop> 
 impl<M: Metadata, S: Middleware<M>> ServerHandler<M, S> {
 	/// Create new request handler.
 	pub fn new(
-		jsonrpc_handler: WeakRpc<M, S>,
+		tetsy_jsonrpc_handler: WeakRpc<M, S>,
 		cors_domains: CorsDomains,
 		cors_max_age: Option<u32>,
 		cors_allowed_headers: cors::AccessControlAllowHeaders,
@@ -43,7 +43,7 @@ impl<M: Metadata, S: Middleware<M>> ServerHandler<M, S> {
 		keep_alive: bool,
 	) -> Self {
 		ServerHandler {
-			jsonrpc_handler,
+			tetsy_jsonrpc_handler,
 			allowed_hosts,
 			cors_domains,
 			cors_max_age,
@@ -88,7 +88,7 @@ impl<M: Metadata, S: Middleware<M>> Service for ServerHandler<M, S> {
 			Ok(response) => Handler::Middleware(response),
 			Err(request) => {
 				Handler::Rpc(RpcHandler {
-					jsonrpc_handler: self.jsonrpc_handler.clone(),
+					tetsy_jsonrpc_handler: self.tetsy_jsonrpc_handler.clone(),
 					state: RpcHandlerState::ReadingHeaders {
 						request,
 						cors_domains: self.cors_domains.clone(),
@@ -217,7 +217,7 @@ where
 }
 
 pub struct RpcHandler<M: Metadata, S: Middleware<M>> {
-	jsonrpc_handler: WeakRpc<M, S>,
+	tetsy_jsonrpc_handler: WeakRpc<M, S>,
 	state: RpcHandlerState<M, S::Future, S::CallFuture>,
 	is_options: bool,
 	cors_allow_origin: cors::AllowCors<header::HeaderValue>,
@@ -352,7 +352,7 @@ impl<M: Metadata, S: Middleware<M>> RpcHandler<M, S> {
 		}
 
 		// Read metadata
-		let handler = match self.jsonrpc_handler.upgrade() {
+		let handler = match self.tetsy_jsonrpc_handler.upgrade() {
 			Some(handler) => handler,
 			None => return RpcHandlerState::Writing(Response::closing()),
 		};
@@ -416,7 +416,7 @@ impl<M: Metadata, S: Middleware<M>> RpcHandler<M, S> {
 			id: Id::Num(1),
 		}));
 
-		let response = match self.jsonrpc_handler.upgrade() {
+		let response = match self.tetsy_jsonrpc_handler.upgrade() {
 			Some(h) => h.handler.handle_rpc_request(call, metadata),
 			None => return Ok(RpcPollState::Ready(RpcHandlerState::Writing(Response::closing()))),
 		};
@@ -466,7 +466,7 @@ impl<M: Metadata, S: Middleware<M>> RpcHandler<M, S> {
 			id: Id::Num(1),
 		}));
 
-		let response = match self.jsonrpc_handler.upgrade() {
+		let response = match self.tetsy_jsonrpc_handler.upgrade() {
 			Some(h) => h.handler.handle_rpc_request(call, metadata),
 			None => return Ok(RpcPollState::Ready(RpcHandlerState::Writing(Response::closing()))),
 		};
@@ -511,7 +511,7 @@ impl<M: Metadata, S: Middleware<M>> RpcHandler<M, S> {
 						}
 					};
 
-					let response = match self.jsonrpc_handler.upgrade() {
+					let response = match self.tetsy_jsonrpc_handler.upgrade() {
 						Some(h) => h.handler.handle_request(content, metadata),
 						None => return Ok(RpcPollState::Ready(RpcHandlerState::Writing(Response::closing()))),
 					};
@@ -602,7 +602,7 @@ impl<M: Metadata, S: Middleware<M>> RpcHandler<M, S> {
 #[cfg(test)]
 mod test {
 	use super::{hyper, RpcHandler};
-	use jsonrpc_core::middleware::Noop;
+	use tetsy_jsonrpc_core::middleware::Noop;
 
 	#[test]
 	fn test_case_insensitive_content_type() {

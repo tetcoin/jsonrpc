@@ -1,15 +1,15 @@
-extern crate jsonrpc_core;
-extern crate jsonrpc_ipc_server;
-extern crate jsonrpc_pubsub;
+extern crate tetsy_jsonrpc_core;
+extern crate tetsy_jsonrpc_ipc_server;
+extern crate tetsy_jsonrpc_pubsub;
 
 use std::sync::Arc;
 use std::{thread, time};
 
-use jsonrpc_core::*;
-use jsonrpc_ipc_server::{RequestContext, ServerBuilder, SessionId, SessionStats};
-use jsonrpc_pubsub::{PubSubHandler, Session, Subscriber, SubscriptionId};
+use tetsy_jsonrpc_core::*;
+use tetsy_jsonrpc_ipc_server::{RequestContext, ServerBuilder, SessionId, SessionStats};
+use tetsy_jsonrpc_pubsub::{PubSubHandler, Session, Subscriber, SubscriptionId};
 
-use jsonrpc_core::futures::Future;
+use tetsy_jsonrpc_core::futures::Future;
 
 /// To test the server:
 ///

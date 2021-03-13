@@ -1,8 +1,8 @@
 use serde::{Deserialize, Serialize};
 
-use jsonrpc_core::futures::future::{self, FutureResult};
-use jsonrpc_core::{Error, IoHandler, IoHandlerExtension, Result};
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::futures::future::{self, FutureResult};
+use tetsy_jsonrpc_core::{Error, IoHandler, IoHandlerExtension, Result};
+use tetsy_jsonrpc_derive::rpc;
 
 // One is both parameter and a result so requires both Serialize and DeserializeOwned
 // Two is only a parameter so only requires DeserializeOwned

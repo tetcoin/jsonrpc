@@ -1,7 +1,7 @@
 use futures::prelude::*;
-use jsonrpc_core::{IoHandler, Result};
-use jsonrpc_core_client::transports::local;
-use jsonrpc_derive::rpc;
+use tetsy_jsonrpc_core::{IoHandler, Result};
+use tetsy_jsonrpc_core_client::transports::local;
+use tetsy_jsonrpc_derive::rpc;
 
 mod client_server {
 	use super::*;
@@ -50,7 +50,7 @@ mod client_server {
 
 mod named_params {
 	use super::*;
-	use jsonrpc_core::Params;
+	use tetsy_jsonrpc_core::Params;
 	use serde_json::json;
 
 	#[rpc(client, params = "named")]
@@ -94,7 +94,7 @@ mod named_params {
 
 mod raw_params {
 	use super::*;
-	use jsonrpc_core::Params;
+	use tetsy_jsonrpc_core::Params;
 	use serde_json::json;
 
 	#[rpc(client)]

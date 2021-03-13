@@ -50,9 +50,9 @@ impl<'a> Fold for RpcTrait {
 			self.has_metadata = true;
 			let mut ty = ty.clone();
 			if self.has_pubsub_methods {
-				ty.bounds.push(parse_quote!(_jsonrpc_pubsub::PubSubMetadata))
+				ty.bounds.push(parse_quote!(_tetsy_jsonrpc_pubsub::PubSubMetadata))
 			} else {
-				ty.bounds.push(parse_quote!(_jsonrpc_core::Metadata))
+				ty.bounds.push(parse_quote!(_tetsy_jsonrpc_core::Metadata))
 			}
 			return ty;
 		}
@@ -198,7 +198,7 @@ fn generate_server_module(
 	rpc_server_trait.supertraits.extend(trait_bounds);
 
 	let optional_pubsub_import = if has_pubsub_methods {
-		crate_name("jsonrpc-pubsub").map(|pubsub_name| quote!(use #pubsub_name as _jsonrpc_pubsub;))
+		crate_name("tetsy-jsonrpc-pubsub").map(|pubsub_name| quote!(use #pubsub_name as _tetsy_jsonrpc_pubsub;))
 	} else {
 		Ok(quote!())
 	}?;
@@ -207,7 +207,7 @@ fn generate_server_module(
 		/// The generated server module.
 		pub mod gen_server {
 			#optional_pubsub_import
-			use self::_jsonrpc_core::futures as _futures;
+			use self::_tetsy_jsonrpc_core::futures as _futures;
 			use super::*;
 
 			#rpc_server_trait
@@ -251,7 +251,7 @@ pub fn rpc_impl(input: syn::Item, options: &DeriveOptions) -> Result<proc_macro2
 	let name = rpc_trait.ident.clone();
 	let mod_name_ident = rpc_wrapper_mod_name(&rpc_trait);
 
-	let core_name = crate_name("jsonrpc-core")?;
+	let core_name = crate_name("tetsy-jsonrpc-core")?;
 
 	let mut submodules = Vec::new();
 	let mut exports = Vec::new();
@@ -274,7 +274,7 @@ pub fn rpc_impl(input: syn::Item, options: &DeriveOptions) -> Result<proc_macro2
 	}
 	Ok(quote!(
 		mod #mod_name_ident {
-			use #core_name as _jsonrpc_core;
+			use #core_name as _tetsy_jsonrpc_core;
 			use super::*;
 
 			#(#submodules)*

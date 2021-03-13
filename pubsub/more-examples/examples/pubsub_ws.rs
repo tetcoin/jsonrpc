@@ -1,15 +1,15 @@
-extern crate jsonrpc_core;
-extern crate jsonrpc_pubsub;
-extern crate jsonrpc_ws_server;
+extern crate tetsy_jsonrpc_core;
+extern crate tetsy_jsonrpc_pubsub;
+extern crate tetsy_jsonrpc_ws_server;
 
 use std::sync::Arc;
 use std::{thread, time};
 
-use jsonrpc_core::*;
-use jsonrpc_pubsub::{PubSubHandler, Session, Subscriber, SubscriptionId};
-use jsonrpc_ws_server::{RequestContext, ServerBuilder};
+use tetsy_jsonrpc_core::*;
+use tetsy_jsonrpc_pubsub::{PubSubHandler, Session, Subscriber, SubscriptionId};
+use tetsy_jsonrpc_ws_server::{RequestContext, ServerBuilder};
 
-use jsonrpc_core::futures::Future;
+use tetsy_jsonrpc_core::futures::Future;
 
 /// Use following node.js code to test:
 ///

@@ -1,4 +1,4 @@
-use jsonrpc_core::*;
+use tetsy_jsonrpc_core::*;
 use serde_derive::Deserialize;
 
 #[derive(Deserialize)]

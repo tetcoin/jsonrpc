@@ -1,7 +1,7 @@
-# jsonrpc-ws-server
+# tetsy-jsonrpc-ws-server
 WebSockets server for JSON-RPC 2.0.
 
-[Documentation](http://paritytech.github.io/jsonrpc/jsonrpc_ws_server/index.html)
+[Documentation](http://tetcoin.github.io/tetsy-jsonrpc/tetsy_jsonrpc_ws_server/index.html)
 
 ## Example
 
@@ -9,14 +9,14 @@ WebSockets server for JSON-RPC 2.0.
 
 ```
 [dependencies]
-jsonrpc-ws-server = "14.2"
+tetsy-jsonrpc-ws-server = "14.2"
 ```
 
 `main.rs`
 
 ```rust
-use jsonrpc_ws_server::*;
-use jsonrpc_ws_server::jsonrpc_core::*;
+use tetsy_jsonrpc_ws_server::*;
+use tetsy_jsonrpc_ws_server::tetsy_jsonrpc_core::*;
 
 fn main() {
 	let mut io = IoHandler::new();

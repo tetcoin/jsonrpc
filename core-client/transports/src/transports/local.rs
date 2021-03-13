@@ -4,8 +4,8 @@ use crate::{RpcChannel, RpcError};
 use failure::format_err;
 use futures::prelude::*;
 use futures::sync::mpsc;
-use jsonrpc_core::{MetaIoHandler, Metadata, Middleware};
-use jsonrpc_pubsub::Session;
+use tetsy_jsonrpc_core::{MetaIoHandler, Metadata, Middleware};
+use tetsy_jsonrpc_pubsub::Session;
 use std::ops::Deref;
 use std::sync::Arc;
 

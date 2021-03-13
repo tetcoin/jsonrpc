@@ -5,7 +5,7 @@
 use failure::{format_err, Fail};
 use futures::sync::{mpsc, oneshot};
 use futures::{future, prelude::*};
-use jsonrpc_core::{Error, Params};
+use tetsy_jsonrpc_core::{Error, Params};
 use serde::de::DeserializeOwned;
 use serde::Serialize;
 use serde_json::Value;
@@ -371,8 +371,8 @@ mod tests {
 	use super::*;
 	use crate::transports::local;
 	use crate::{RpcChannel, RpcError, TypedClient};
-	use jsonrpc_core::{self as core, IoHandler};
-	use jsonrpc_pubsub::{PubSubHandler, Subscriber, SubscriptionId};
+	use tetsy_jsonrpc_core::{self as core, IoHandler};
+	use tetsy_jsonrpc_pubsub::{PubSubHandler, Subscriber, SubscriptionId};
 	use std::sync::atomic::{AtomicBool, Ordering};
 	use std::sync::Arc;
 
@@ -402,7 +402,7 @@ mod tests {
 		handler.add_method("add", |params: Params| {
 			let (a, b) = params.parse::<(u64, u64)>()?;
 			let res = a + b;
-			Ok(jsonrpc_core::to_value(res).unwrap())
+			Ok(tetsy_jsonrpc_core::to_value(res).unwrap())
 		});
 
 		let (client, rpc_client) = local::connect::<AddClient, _, _>(handler);

@@ -2,8 +2,8 @@
 //!
 //! ```no_run
 //!
-//! use jsonrpc_stdio_server::ServerBuilder;
-//! use jsonrpc_stdio_server::jsonrpc_core::*;
+//! use tetsy_jsonrpc_stdio_server::ServerBuilder;
+//! use tetsy_jsonrpc_stdio_server::tetsy_jsonrpc_core::*;
 //!
 //! fn main() {
 //! 	let mut io = IoHandler::default();
@@ -22,9 +22,9 @@ use tokio_stdin_stdout;
 #[macro_use]
 extern crate log;
 
-pub use jsonrpc_core;
+pub use tetsy_jsonrpc_core;
 
-use jsonrpc_core::IoHandler;
+use tetsy_jsonrpc_core::IoHandler;
 use std::sync::Arc;
 use tokio::prelude::{Future, Stream};
 use tokio_codec::{FramedRead, FramedWrite, LinesCodec};
