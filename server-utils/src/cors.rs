@@ -511,7 +511,7 @@ mod tests {
 		let origin3 = Some("chrome-extension://test".into());
 		let host = None;
 		let allowed = Some(vec![
-			AccessControlAllowOrigin::Value("http://*.io".into()),
+			AccessControlAllowOrigin::Value("http://*.org".into()),
 			AccessControlAllowOrigin::Value("chrome-extension://*".into()),
 		]);
 

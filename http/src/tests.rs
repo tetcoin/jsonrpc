@@ -12,7 +12,7 @@ use super::*;
 fn serve_hosts(hosts: Vec<Host>) -> Server {
 	ServerBuilder::new(IoHandler::default())
 		.cors(DomainsValidation::AllowOnly(vec![AccessControlAllowOrigin::Value(
-			"parity.io".into(),
+			"tetcoin.org".into(),
 		)]))
 		.allowed_hosts(DomainsValidation::AllowOnly(hosts))
 		.start_http(&"127.0.0.1:0".parse().unwrap())
@@ -26,7 +26,7 @@ fn id<T>(t: T) -> T {
 fn serve<F: FnOnce(ServerBuilder) -> ServerBuilder>(alter: F) -> Server {
 	let builder = ServerBuilder::new(io())
 		.cors(DomainsValidation::AllowOnly(vec![
-			AccessControlAllowOrigin::Value("parity.io".into()),
+			AccessControlAllowOrigin::Value("tetcoin.org".into()),
 			AccessControlAllowOrigin::Null,
 		]))
 		.cors_max_age(None)
@@ -44,7 +44,7 @@ fn serve_allow_headers(cors_allow_headers: cors::AccessControlAllowHeaders) -> S
 	});
 	ServerBuilder::new(io)
 		.cors(DomainsValidation::AllowOnly(vec![
-			AccessControlAllowOrigin::Value("parity.io".into()),
+			AccessControlAllowOrigin::Value("tetcoin.org".into()),
 			AccessControlAllowOrigin::Null,
 		]))
 		.cors_allow_headers(cors_allow_headers)
@@ -333,7 +333,7 @@ fn should_add_cors_allow_origins() {
 			"\
 			 POST / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Connection: close\r\n\
 			 Content-Type: application/json\r\n\
 			 Content-Length: {}\r\n\
@@ -351,7 +351,7 @@ fn should_add_cors_allow_origins() {
 	assert!(
 		response
 			.headers
-			.contains("access-control-allow-origin: http://parity.io"),
+			.contains("access-control-allow-origin: http://tetcoin.org"),
 		"Headers missing in {}",
 		response.headers
 	);
@@ -370,7 +370,7 @@ fn should_add_cors_max_age_headers() {
 			"\
 			 POST / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Connection: close\r\n\
 			 Content-Type: application/json\r\n\
 			 Content-Length: {}\r\n\
@@ -388,7 +388,7 @@ fn should_add_cors_max_age_headers() {
 	assert!(
 		response
 			.headers
-			.contains("access-control-allow-origin: http://parity.io"),
+			.contains("access-control-allow-origin: http://tetcoin.org"),
 		"Headers missing in {}",
 		response.headers
 	);
@@ -586,7 +586,7 @@ fn should_not_allow_request_larger_than_max() {
 #[test]
 fn should_reject_invalid_hosts() {
 	// given
-	let server = serve_hosts(vec!["parity.io".into()]);
+	let server = serve_hosts(vec!["tetcoin.org".into()]);
 
 	// when
 	let req = r#"{"jsonrpc":"2.0","id":1,"method":"x"}"#;
@@ -615,7 +615,7 @@ fn should_reject_invalid_hosts() {
 #[test]
 fn should_reject_missing_host() {
 	// given
-	let server = serve_hosts(vec!["parity.io".into()]);
+	let server = serve_hosts(vec!["tetcoin.org".into()]);
 
 	// when
 	let req = r#"{"jsonrpc":"2.0","id":1,"method":"x"}"#;
@@ -643,7 +643,7 @@ fn should_reject_missing_host() {
 #[test]
 fn should_allow_if_host_is_valid() {
 	// given
-	let server = serve_hosts(vec!["parity.io".into()]);
+	let server = serve_hosts(vec!["tetcoin.org".into()]);
 
 	// when
 	let req = r#"{"jsonrpc":"2.0","id":1,"method":"x"}"#;
@@ -652,7 +652,7 @@ fn should_allow_if_host_is_valid() {
 		&format!(
 			"\
 			 POST / HTTP/1.1\r\n\
-			 Host: parity.io\r\n\
+			 Host: tetcoin.org\r\n\
 			 Connection: close\r\n\
 			 Content-Type: application/json\r\n\
 			 Content-Length: {}\r\n\
@@ -683,7 +683,7 @@ fn should_respond_configured_allowed_hosts_to_options() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Access-Control-Request-Headers: {}\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
@@ -716,7 +716,7 @@ fn should_not_contain_default_cors_allow_headers() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Connection: close\r\n\
 			 Content-Type: application/json\r\n\
 			 Content-Length: 0\r\n\
@@ -746,7 +746,7 @@ fn should_respond_valid_to_default_allowed_headers() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
 			 Connection: close\r\n\
@@ -780,7 +780,7 @@ fn should_by_default_respond_valid_to_any_request_headers() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
 			 Connection: close\r\n\
@@ -815,7 +815,7 @@ fn should_respond_valid_to_configured_allow_headers() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
 			 Connection: close\r\n\
@@ -849,7 +849,7 @@ fn should_respond_invalid_if_non_allowed_header_used() {
 			"\
 			 POST / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
 			 Connection: close\r\n\
@@ -944,7 +944,7 @@ fn should_respond_valid_on_case_mismatches_in_allowed_headers() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
 			 Connection: close\r\n\
@@ -976,7 +976,7 @@ fn should_respond_valid_to_any_requested_header() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
 			 Connection: close\r\n\
@@ -1010,7 +1010,7 @@ fn should_forbid_invalid_request_headers() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
 			 Connection: close\r\n\
@@ -1040,7 +1040,7 @@ fn should_respond_valid_to_wildcard_if_any_header_allowed() {
 			"\
 			 OPTIONS / HTTP/1.1\r\n\
 			 Host: 127.0.0.1:8080\r\n\
-			 Origin: http://parity.io\r\n\
+			 Origin: http://tetcoin.org\r\n\
 			 Content-Length: 0\r\n\
 			 Content-Type: application/json\r\n\
 			 Connection: close\r\n\
@@ -1062,7 +1062,7 @@ fn should_respond_valid_to_wildcard_if_any_header_allowed() {
 #[test]
 fn should_allow_application_json_utf8() {
 	// given
-	let server = serve_hosts(vec!["parity.io".into()]);
+	let server = serve_hosts(vec!["tetcoin.org".into()]);
 
 	// when
 	let req = r#"{"jsonrpc":"2.0","id":1,"method":"x"}"#;
@@ -1071,7 +1071,7 @@ fn should_allow_application_json_utf8() {
 		&format!(
 			"\
 			 POST / HTTP/1.1\r\n\
-			 Host: parity.io\r\n\
+			 Host: tetcoin.org\r\n\
 			 Connection: close\r\n\
 			 Content-Type: application/json; charset=utf-8\r\n\
 			 Content-Length: {}\r\n\
@@ -1091,7 +1091,7 @@ fn should_allow_application_json_utf8() {
 #[test]
 fn should_always_allow_the_bind_address() {
 	// given
-	let server = serve_hosts(vec!["parity.io".into()]);
+	let server = serve_hosts(vec!["tetcoin.org".into()]);
 	let addr = server.address().clone();
 
 	// when
