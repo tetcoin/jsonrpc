@@ -42,7 +42,8 @@ tetsy-jsonrpc-core = { version = "15.1.0", path = "../../core" }
 tetsy-jsonrpc-pubsub = { version = "15.1.0", path = "../../pubsub" }
 tetsy-jsonrpc-server-utils = { version = "15.1.0", path = "../../server-utils", optional = true }
 log = "0.4"
-tetsy-tokio-ipc = { version = "0.2", optional = true }
+# parity-tokio-ipc = { version = "0.2", optional = true }
+tetsy-tokio-ipc = { version = "0.4", optional = true }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "0.1", optional = true }
